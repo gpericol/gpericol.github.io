@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Doge Agile</title>
+	<style>
+		* { margin: 0; padding: 0; }
+		
+		html, body {
+			height:100%;
+		}
+		
+		body 
+		{
+			background-color: white;
+			background-image: url('doge.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center top;
+			background-attachment: fixed;
+
+		}
+		
+		#wise {
+			font-family: "Comic Sans MS", cursive, sans-serif;
+			font-weight: bold;
+			font-size: 7vmin;
+			text-shadow: 2px 2px #333333;
+			opacity: 0;
+			animation: fadeIn .5s ease-in 1 forwards;
+		}
+		
+		@keyframes fadeIn {
+		  to {
+			opacity: 1;
+		  }
+		}
+	</style>
+</head>
+<body>
+<script>
+var terms = [
+	"Acceptance Test Driven Development",
+	"Acceptance Testing",
+	"AntiPattern",
+	"Automated Build",
+	"Backlog",
+	"Backlog Grooming",
+	"Behavior Driven Development",
+	"Burndown Chart",
+	"Business Agility",
+	"Collective Ownership",
+	"Continuous Deployment",
+	"Continuous Integration",
+	"CRC Cards",
+	"Daily Meeting",
+	"Definition of Done",
+	"Definition of Ready",
+	"Estimation",
+	"Exploratory Testing",
+	"Facilitation",
+	"Frequent Releases",
+	"Given – When – Then",
+	"Heartbeat Retrospective",
+	"Incremental Development",
+	"Information Radiators",
+	"Integration",
+	"Invest",
+	"Iteration",
+	"Iterative Development",
+	"Kanban",
+	"Kanban Board",
+	"Lead Time",
+	"Milestone Retrospective",
+	"Mob Programming",
+	"Mock Objects",
+	"Niko-niko Calendar",
+	"Pair Programming",
+	"Personas",
+	"Planning Poker",
+	"Points",
+	"Product Owner",
+	"Project Chartering",
+	"Quick Design Session",
+	"Refactoring",
+	"Relative Estimation",
+	"Role-feature-reason",
+	"Rules of Simplicity",
+	"Scrum",
+	"Scrum Master",
+	"Scrum of Scrums",
+	"Sign Up For Tasks",
+	"Simple Design",
+	"Story Mapping",
+	"Story Splitting",
+	"Sustainable Pace",
+	"Task Board",
+	"TDD",
+	"Team",
+	"Team Room",
+	"The Three C’s",
+	"Three Amigos",
+	"Three Questions",
+	"Timebox",
+	"Ubiquitous Language",
+	"Unit Testing",
+	"Usability Testing",
+	"User Stories",
+	"Velocity",
+	"Version Control"
+];
+
+var modifiers = ["so", "such", "many", "much", "very"];
+
+function getRandomPosition(element) {
+	var x = window.innerHeight - element.clientHeight;
+	var y = window.innerWidth - element.clientWidth;
+	var randomX = Math.floor(Math.random()*x);
+	var randomY = Math.floor(Math.random()*y);
+	return [randomX,randomY];
+}
+
+function getRandomColor() {
+	var letters = '0123456789ABCDEF';
+	var color = '#';
+	for (var i = 0; i < 6; i++ ) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+
+function getRandomItem(items){
+	return items[Math.floor(Math.random()*items.length)];
+}
+
+function generateWise(){
+	var wise;
+	if(Math.floor(Math.random()*10) == 0){
+		wise = "wow"
+	}else{
+		wise = getRandomItem(modifiers) + " " + getRandomItem(terms).toLowerCase();
+	}
+	return wise;
+}
+
+function removeWise(){
+	var wise = document.getElementById("wise");
+	if(wise){
+		wise.remove();
+	}
+}
+
+function printWise(){
+	var element = document.createElement('div');
+	element.setAttribute("style", "position:absolute;");
+	element.setAttribute("id", "wise");
+	document.body.appendChild(element);
+	element.textContent = generateWise();
+	element.style.color = getRandomColor();
+	var xy = getRandomPosition(element);
+	element.style.top = xy[0] + 'px';
+	element.style.left = xy[1] + 'px';
+}
+
+window.onload = function() {
+	printWise();
+	setInterval(function(){ 
+		removeWise();
+		printWise();
+	}, 2000);
+}
+</script>
+</body>
+
+
+</html>
